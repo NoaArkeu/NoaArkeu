@@ -8,14 +8,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # --- 关键改动：强制开启 Node 24 环境变量 ---
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    # ---------------------------------------
     permissions:
       contents: write    
     steps:
-      - uses: actions/checkout@v4 # 升级到 v4
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v5 # 升级到 v5
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.11' # 用更稳的 3.11
+          python-version: '3.11'
       - name: Install dependencies
         run: pip install requests
       - name: Run script
@@ -25,5 +29,5 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add README.md
-          git commit -m "Security patch: Upgrade Actions & Update data" || exit 0
+          git commit -m "System: Force Node 24 & Update" || exit 0
           git push
