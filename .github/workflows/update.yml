@@ -2,20 +2,20 @@ name: Hourly Update v2
 
 on:
   schedule:
-    - cron: '0 * * * *' # 每小时运行
-  workflow_dispatch:      # 允许手动运行
+    - cron: '0 * * * *' 
+  workflow_dispatch:      
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write    # 赋予机器人修改文件的权限
+      contents: write    
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4 # 升级到 v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5 # 升级到 v5
         with:
-          python-version: '3.9'
+          python-version: '3.11' # 用更稳的 3.11
       - name: Install dependencies
         run: pip install requests
       - name: Run script
@@ -25,5 +25,5 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add README.md
-          git commit -m "Update weather & picnic advice" || exit 0
+          git commit -m "Security patch: Upgrade Actions & Update data" || exit 0
           git push
