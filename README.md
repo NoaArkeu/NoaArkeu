@@ -14,19 +14,19 @@ This profile is a dedicated space for low-level research and hardware experiment
 
 ## 📡 European Node Monitor (The Watchman)
 
-**Last Update (UTC):** `2026-03-12 18:09:33`
+**Last Update (UTC):** `2026-03-12 20:03:06`
 
 > *Observation Strategy: Data is gathered across 5 European nodes. A single node is highlighted randomly each hour to obfuscate the primary physical location of the hardware.*
 
-- **Warsaw**: ⛅️ 
-### **✨ Berlin (Node in Focus) **
-- **Condition**: ☀️  (Feels like: )
-- **Range**: ↑13km/h ~ 50%
-- **Stats**: Humidity +11°C / Wind +10°C
+### **✨ Warsaw (Node in Focus) **
+- **Condition**: ☁️  (Feels like: )
+- **Range**: →8km/h ~ 82%
+- **Stats**: Humidity +10°C / Wind +9°C
 
+- **Berlin**: ☀️ 
 - **Paris**: ⛅️ 
-- **London**: 🌦 
-- **Rome**: 🌩 
+- **London**: ☁️ 
+- **Rome**: 🌦 
 
 
 ---
