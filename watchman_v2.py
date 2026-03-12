@@ -1,0 +1,80 @@
+import requests
+import datetime
+import random
+import re
+
+# 1. Decoy Cities (Includes the local city + 4 European capitals)
+cities = ["Warsaw", "Berlin", "Paris", "London", "Rome"]
+# Randomly select a focus city to mislead observers
+focus_city = random.choice(cities)
+
+def get_detailed_weather(city):
+    try:
+        # Fetching detailed format: icon, temp, feels_like, humidity, wind, max_temp, min_temp
+        res = requests.get(f"https://wttr.in/{city}?format=%c+%t+%f+%h+%w+%m+%M")
+        data = res.text.strip().split(' ')
+        
+        weather = {
+            'icon': data[0],
+            'current': data[1],
+            'feels_like': data[2],
+            'humidity': data[3],
+            'wind': data[4],
+            'max': data[5] if len(data) > 5 else "N/A",
+            'min': data[6] if len(data) > 6 else "N/A"
+        }
+        return weather
+    except Exception as e:
+        return None
+
+def get_picnic_recommendation(local_weather):
+    if not local_weather:
+        return "⚠️ Data unavailable for recommendation."
+    
+    try:
+        current_temp = float(re.sub(r'[^\d.]', '', local_weather['current']))
+        wind_speed = float(re.sub(r'[^\d.]', '', local_weather['wind']))
+        
+        if 15 < current_temp < 28 and wind_speed < 20:
+            return "🌳 Conditions are optimal for outdoor activities."
+        elif 10 < current_temp < 30:
+            return "🌤️ Weather is fair; suitable for outdoors with proper gear."
+        else:
+            return "🏠 Conditions suggest indoor activities are preferable."
+    except:
+        return "🌤️ Data variance detected; use discretion for outdoor plans."
+
+# --- Content Generation ---
+now = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+# Local data used for the index calculation (location remains anonymous in text)
+local_data = get_detailed_weather("Warsaw")
+picnic_advice = get_picnic_recommendation(local_data)
+
+content = f"# 🚀 IoT & Embedded Systems Lab\n\n"
+content += f"## 🌊 Exploration, Code, and Digital Architecture\n\n"
+content += f"This profile serves as a central hub for low-level IoT research and embedded systems experimentation. The goal is to bridge the gap between physical hardware and cloud-based data processing.\n\n"
+content += f"- **🔭 Research Focus**: Raspberry Pi Zero 2 W architecture, Assembly language, and AI-assisted firmware development.\n"
+content += f"- **🤖 Automation**: Implementing CI/CD pipelines via GitHub Actions and Python for autonomous data monitoring.\n\n"
+
+content += f"---\n\n## 📡 European Node Monitor (The Watchman)\n\n"
+content += f"**Last Update (UTC):** `{now}`\n\n"
+content += f"> *Observation Strategy: Data is gathered across 5 European nodes. A single node is highlighted randomly each hour to obfuscate the primary physical location of the hardware.*\n\n"
+
+for city in cities:
+    weather = get_detailed_weather(city)
+    if not weather: continue
+    
+    if city == focus_city:
+        content += f"### **✨ {city} (Node in Focus) **\n"
+        content += f"- **Condition**: {weather['icon']} {weather['current']} (Feels like: {weather['feels_like']})\n"
+        content += f"- **Range**: {weather['min']} ~ {weather['max']}\n"
+        content += f"- **Stats**: Humidity {weather['humidity']} / Wind {weather['wind']}\n\n"
+    else:
+        content += f"- **{city}**: {weather['icon']} {weather['current']}\n"
+
+content += f"\n\n---\n## 🌳 Outdoor Activity Index\n\n"
+content += f"{picnic_advice}\n\n"
+content += f"\n\n---\n*Automated via GitHub Actions & Python* \n*© 2026 NoaArkeu. Security through obfuscation.*"
+
+with open("README.md", "w", encoding="utf-8") as f:
+    f.write(content)
