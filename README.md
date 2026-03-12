@@ -11,18 +11,18 @@ This profile serves as a central hub for low-level IoT research and embedded sys
 
 ## 📡 European Node Monitor (The Watchman)
 
-**Last Update (UTC):** `2026-03-12 15:04:40`
+**Last Update (UTC):** `2026-03-12 15:07:54`
 
 > *Observation Strategy: Data is gathered across 5 European nodes. A single node is highlighted randomly each hour to obfuscate the primary physical location of the hardware.*
 
-### **✨ Warsaw (Node in Focus) **
-- **Condition**: ⛅️  (Feels like: +16°C)
-- **Range**: 🌗 ~ →16km/h
-- **Stats**: Humidity +16°C / Wind 51%
-
+- **Warsaw**: ⛅️ 
 - **Berlin**: ☀️ 
 - **Paris**: ☁️ 
-- **London**: 🌧 
+### **✨ London (Node in Focus) **
+- **Condition**: 🌧  (Feels like: )
+- **Range**: ↗34km/h ~ 76%
+- **Stats**: Humidity +11°C / Wind +8°C
+
 - **Rome**: 🌦 
 
 
