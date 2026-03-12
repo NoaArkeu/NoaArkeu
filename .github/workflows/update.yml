@@ -8,10 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # --- 关键改动：强制开启 Node 24 环境变量 ---
+    # --- 关键：这就是你要改的环境变量 ---
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-    # ---------------------------------------
+    # -----------------------------------
     permissions:
       contents: write    
     steps:
@@ -29,5 +29,5 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add README.md
-          git commit -m "System: Force Node 24 & Update" || exit 0
+          git commit -m "System: Force Node 24 & Update Bio" || exit 0
           git push
