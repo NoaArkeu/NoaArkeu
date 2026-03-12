@@ -50,12 +50,18 @@ now = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 local_data = get_detailed_weather("Warsaw")
 picnic_advice = get_picnic_recommendation(local_data)
 
+# ... (前面的 import 和 get_detailed_weather 函数保持不变)
+
 content = f"# 🚀 IoT & Embedded Systems Lab\n\n"
 content += f"## 🌊 Exploration, Code, and Digital Architecture\n\n"
-content += f"This profile serves as a central hub for low-level IoT research and embedded systems experimentation. The goal is to bridge the gap between physical hardware and cloud-based data processing.\n\n"
-content += f"- **🔭 Research Focus**: Raspberry Pi Zero 2 W architecture, Assembly language, and AI-assisted firmware development.\n"
-content += f"- **🤖 Automation**: Implementing CI/CD pipelines via GitHub Actions and Python for autonomous data monitoring.\n\n"
+content += f"This profile is a dedicated space for low-level research and hardware experimentation. I am currently focused on the Raspberry Pi ecosystem, exploring the intersection of physical computing and automated data streams.\n\n"
+content += f"- **🔭 Current Hardware Stack**: \n"
+content += f"  - **Raspberry Pi 5** (High-performance computing)\n"
+content += f"  - **Raspberry Pi Zero 2 W** (Compact embedded projects)\n"
+content += f"  - **Raspberry Pi Pico / Pico 2 W** (Microcontroller & RP2040/RP2350 logic)\n"
+content += f"- **🤖 Research Focus**: Assembly language, C/C++ for MCU, and autonomous monitoring via CI/CD pipelines.\n\n"
 
+# ... (后面的天气抓取和 decoy 逻辑保持不变)
 content += f"---\n\n## 📡 European Node Monitor (The Watchman)\n\n"
 content += f"**Last Update (UTC):** `{now}`\n\n"
 content += f"> *Observation Strategy: Data is gathered across 5 European nodes. A single node is highlighted randomly each hour to obfuscate the primary physical location of the hardware.*\n\n"
