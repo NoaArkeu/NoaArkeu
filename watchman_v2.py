@@ -14,7 +14,7 @@ def get_detailed_weather(city):
     try:
         # Fetching detailed format: icon, temp, feels_like, humidity, wind, max_temp, min_temp
         res = requests.get(f"https://wttr.in/{city}?format=%c+%t+%f+%h+%w+%m+%M")
-        data = res.text.strip().split(' ')
+        data = res.text.strip().split('+')
         
         weather = {
             'icon': data[0],
@@ -33,7 +33,7 @@ def get_brief_weather(city):
     try:
         # Fetching brief format: icon and current temp only
         res = requests.get(f"https://wttr.in/{city}?format=%c+%t")
-        data = res.text.strip().split(' ')
+        data = res.text.strip().split('+')
         return {
             'icon': data[0],
             'current': data[1] if len(data) > 1 else "N/A"
