@@ -214,21 +214,20 @@ def card_weather():
 
     if not data:
         body = f"""
-  <text x="48" y="100" font-size="17" font-family="Segoe UI, Arial" fill="#334240">Weather data unavailable</text>
-  <text x="48" y="132" font-size="14" font-family="Segoe UI, Arial" fill="#6b807c">Check API/network</text>
-  <text x="48" y="164" font-size="13" font-family="Segoe UI, Arial" fill="#8a9b98">Updated: {now}</text>
+  <text x="48" y="100" font-size="14" font-family="Segoe UI, Arial" fill="#334240">Weather data unavailable</text>
+  <text x="48" y="122" font-size="12" font-family="Segoe UI, Arial" fill="#6b807c">Check API/network</text>
+  <text x="48" y="142" font-size="11" font-family="Segoe UI, Arial" fill="#8a9b98">Updated: {now}</text>
 """
-        return shell("🍡 Weather Ring", body, h=230)
+        return shell("🍡 Weather Ring", body, h=210)
 
     focus = random.choice(data)
 
-    # smaller bubbles and smaller center panel
     positions = [
-        (300, 66),   # top
+        (300, 64),   # top
         (110, 100),  # left-top
         (500, 100),  # right-top
-        (95, 168),   # left-bottom
-        (515, 168),  # right-bottom
+        (95, 156),   # left-bottom
+        (515, 156),  # right-bottom
     ]
 
     bubbles = []
@@ -241,12 +240,12 @@ def card_weather():
 
         is_focus = (city_name == focus.get("city"))
         stroke = "#78cab8" if is_focus else "#e2efe9"
-        stroke_w = "2" if is_focus else "1"
+        stroke_w = "1.8" if is_focus else "1"
 
         bubbles.append(f"""
   <g>
-    <rect x="{x}" y="{y}" rx="14" ry="14" width="132" height="40" fill="#ffffff" stroke="{stroke}" stroke-width="{stroke_w}"/>
-    <text x="{x+10}" y="{y+25}" font-size="12.8" font-family="Segoe UI, Arial" fill="#334240">{emj} {esc(city_name)} {esc(ts)}</text>
+    <rect x="{x}" y="{y}" rx="12" ry="12" width="132" height="36" fill="#ffffff" stroke="{stroke}" stroke-width="{stroke_w}"/>
+    <text x="{x+10}" y="{y+23}" font-size="11.5" font-family="Segoe UI, Arial" fill="#334240">{emj} {esc(city_name)} {esc(ts)}</text>
   </g>""")
 
     f_emj, f_desc = code_to_emoji(focus.get("code", -1))
@@ -258,14 +257,12 @@ def card_weather():
     body = f"""
   {''.join(bubbles)}
 
-  <rect x="232" y="126" rx="16" ry="16" width="296" height="74" fill="#ffffff" stroke="#dfeee8"/>
-  <text x="248" y="148" font-size="13" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="700">Focus: {esc(f_city)}</text>
-  <text x="248" y="173" font-size="20" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="800">{f_emj} {esc(f_temp_s)} · {esc(f_desc)}</text>
-
-  <text x="232" y="214" font-size="12.8" font-family="Segoe UI, Arial" fill="#5d7470">Trip Tip: {esc(tip)}</text>
-  <text x="232" y="228" font-size="12" font-family="Segoe UI, Arial" fill="#8a9b98">Updated: {esc(now)} · Focus rotates each run</text>
+  <text x="232" y="138" font-size="11.8" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="700">Focus: {esc(f_city)}</text>
+  <text x="232" y="160" font-size="14.5" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="800">{f_emj} {esc(f_temp_s)} · {esc(f_desc)}</text>
+  <text x="232" y="179" font-size="11.2" font-family="Segoe UI, Arial" fill="#5d7470">Trip Tip: {esc(tip)}</text>
+  <text x="232" y="196" font-size="10.8" font-family="Segoe UI, Arial" fill="#8a9b98">Updated: {esc(now)} · Focus rotates each run</text>
 """
-    return shell("🍡 Weather Ring", body, h=240)
+    return shell("🍡 Weather Ring", body, h=210)
 
 
 def save(path: Path, text: str):
