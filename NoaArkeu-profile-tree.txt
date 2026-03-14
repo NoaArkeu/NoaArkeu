@@ -1,0 +1,7 @@
+NoaArkeu/
+├─ README.md
+├─ scripts/
+│  └─ build_cards.py
+└─ .github/
+   └─ workflows/
+      └─ update-cards.yml
