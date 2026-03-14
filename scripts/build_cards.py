@@ -22,6 +22,7 @@ README_PATH = ROOT / "README.md"
 
 
 def esc(s: str) -> str:
+    s = "" if s is None else str(s)
     return (s.replace("&", "&amp;")
              .replace("<", "&lt;")
              .replace(">", "&gt;")
@@ -38,7 +39,11 @@ def gh_repos(username: str, per_page=20):
 
 def geocode_city(city: str):
     url = "https://geocoding-api.open-meteo.com/v1/search"
-    r = requests.get(url, params={"name": city, "count": 1, "language": "en", "format": "json"}, timeout=20)
+    r = requests.get(
+        url,
+        params={"name": city, "count": 1, "language": "en", "format": "json"},
+        timeout=20
+    )
     r.raise_for_status()
     data = r.json()
     results = data.get("results") or []
@@ -116,15 +121,27 @@ def shell(title: str, body: str, w=760, h=250):
 
 def card_intro():
     body = f"""
-  <text x="48" y="95" font-size="20" font-family="Segoe UI, Arial" fill="#334240">Hi, I'm {esc(USERNAME)} 👋</text>
-  <text x="48" y="128" font-size="15" font-family="Segoe UI, Arial" fill="#6b807c">Python / Backend / Embedded Curiosity</text>
-  <text x="48" y="156" font-size="15" font-family="Segoe UI, Arial" fill="#6b807c">Building cute + practical interactive pages ✨</text>
+  <text x="48" y="88" font-size="16" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="700">🌊 Exploration, Code, and Digital Architecture</text>
 
-  <rect x="470" y="78" rx="14" ry="14" width="250" height="100" fill="#ffffff" stroke="#e0efe9"/>
-  <text x="488" y="112" font-size="14" font-family="Segoe UI, Arial" fill="#7c908c">Current Focus</text>
-  <text x="488" y="142" font-size="16" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="700">IoT + UI + Python Automation</text>
+  <text x="48" y="116" font-size="13.5" font-family="Segoe UI, Arial" fill="#5f7470">
+    This profile is a dedicated space for low-level research and hardware experimentation.
+  </text>
+  <text x="48" y="138" font-size="13.5" font-family="Segoe UI, Arial" fill="#5f7470">
+    Focused on the Raspberry Pi ecosystem and automated physical computing workflows.
+  </text>
+
+  <text x="48" y="168" font-size="14" font-family="Segoe UI, Arial" fill="#334240" font-weight="700">🔭 Current Hardware Stack</text>
+  <text x="48" y="188" font-size="13.5" font-family="Segoe UI, Arial" fill="#5f7470">• Raspberry Pi 5 (High-performance computing)</text>
+  <text x="48" y="206" font-size="13.5" font-family="Segoe UI, Arial" fill="#5f7470">• Raspberry Pi Zero 2 W (Compact embedded projects)</text>
+  <text x="48" y="224" font-size="13.5" font-family="Segoe UI, Arial" fill="#5f7470">• Raspberry Pi Pico / Pico 2 W (RP2040/RP2350 logic)</text>
+
+  <rect x="478" y="96" rx="14" ry="14" width="242" height="120" fill="#ffffff" stroke="#e0efe9"/>
+  <text x="494" y="124" font-size="14" font-family="Segoe UI, Arial" fill="#7c908c">🤖 Research Focus</text>
+  <text x="494" y="147" font-size="13.5" font-family="Segoe UI, Arial" fill="#334240">Assembly language</text>
+  <text x="494" y="166" font-size="13.5" font-family="Segoe UI, Arial" fill="#334240">C/C++ for MCU</text>
+  <text x="494" y="185" font-size="13.5" font-family="Segoe UI, Arial" fill="#334240">CI/CD autonomous monitoring</text>
 """
-    return shell("🌱 About Me", body, h=230)
+    return shell("🚀 IoT & Embedded Systems Lab", body, h=260)
 
 
 def card_projects(repos):
@@ -132,7 +149,7 @@ def card_projects(repos):
     repos = [r for r in repos if r.get("name", "").lower() != USERNAME.lower()]
     top = repos[:3]
 
-    y = 94
+    y = 96
     lines = []
     for r in top:
         name = r.get("name", "unknown")
@@ -145,7 +162,7 @@ def card_projects(repos):
         y += 34
 
     if not lines:
-        lines = ['<text x="48" y="95" font-size="15" font-family="Segoe UI, Arial" fill="#6b807c">No public projects yet</text>']
+        lines = ['<text x="48" y="96" font-size="15" font-family="Segoe UI, Arial" fill="#6b807c">No public projects yet</text>']
 
     body = "\n  ".join(lines) + """
   <rect x="540" y="78" rx="12" ry="12" width="180" height="42" fill="#ffffff" stroke="#dff0ea"/>
@@ -157,10 +174,10 @@ def card_projects(repos):
 def get_multi_city_weather():
     cities = [
         ("Shanghai", "Asia/Shanghai"),
-        ("Tokyo", "Asia/Tokyo"),
         ("Paris", "Europe/Paris"),
         ("London", "Europe/London"),
         ("New York", "America/New_York"),
+        ("Warsaw", "Europe/Warsaw"),
     ]
     result = []
     for city, tz in cities:
@@ -175,9 +192,8 @@ def get_multi_city_weather():
 def card_weather():
     now = dt.datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
     data = get_multi_city_weather()
-    focus = random.choice(data) if data else None
 
-    if not focus:
+    if not data:
         body = f"""
   <text x="48" y="100" font-size="17" font-family="Segoe UI, Arial" fill="#334240">Weather data unavailable</text>
   <text x="48" y="132" font-size="14" font-family="Segoe UI, Arial" fill="#6b807c">Check API/network</text>
@@ -185,27 +201,34 @@ def card_weather():
 """
         return shell("🍡 Weather Ring", body, h=250)
 
-    others = [x for x in data if x["city"] != focus["city"]]
-    while len(others) < 4:
-        others.append({"city": "N/A", "temp": None, "code": -1})
+    focus = random.choice(data)
 
+    # 5 cities, fixed layout
     positions = [
-        (85, 96),   # left-top
-        (525, 96),  # right-top
-        (65, 176),  # left-bottom
-        (545, 176), # right-bottom
+        (290, 64),   # top
+        (88, 102),   # left-top
+        (522, 102),  # right-top
+        (84, 182),   # left-bottom
+        (526, 182),  # right-bottom
     ]
 
-    small = []
-    for i, c in enumerate(others[:4]):
+    bubbles = []
+    for i, c in enumerate(data[:5]):
         x, y = positions[i]
         emj, _ = code_to_emoji(c.get("code", -1))
         t = c.get("temp")
         ts = f"{t}°C" if t is not None else "--"
-        small.append(f"""
+        city_name = c.get("city", "Unknown")
+
+        # highlight focused city
+        is_focus = (city_name == focus.get("city"))
+        stroke = "#78cab8" if is_focus else "#e2efe9"
+        stroke_w = "2" if is_focus else "1"
+
+        bubbles.append(f"""
   <g>
-    <rect x="{x}" y="{y}" rx="15" ry="15" width="150" height="46" fill="#ffffff" stroke="#e2efe9"/>
-    <text x="{x+12}" y="{y+29}" font-size="14" font-family="Segoe UI, Arial" fill="#334240">{emj} {esc(c.get('city','Unknown'))} {esc(ts)}</text>
+    <rect x="{x}" y="{y}" rx="15" ry="15" width="150" height="46" fill="#ffffff" stroke="{stroke}" stroke-width="{stroke_w}"/>
+    <text x="{x+12}" y="{y+29}" font-size="14" font-family="Segoe UI, Arial" fill="#334240">{emj} {esc(city_name)} {esc(ts)}</text>
   </g>""")
 
     f_emj, f_desc = code_to_emoji(focus.get("code", -1))
@@ -214,23 +237,19 @@ def card_weather():
     f_city = f"{focus.get('city','Unknown')}, {focus.get('country','')}".strip(", ")
 
     body = f"""
-  <rect x="292" y="64" rx="15" ry="15" width="176" height="44" fill="#ffffff" stroke="#e2efe9"/>
-  <text x="305" y="92" font-size="14" font-family="Segoe UI, Arial" fill="#334240">🌍 5-City Live Weather</text>
+  {''.join(bubbles)}
 
-  {''.join(small)}
-
-  <path d="M230 140 C260 128, 290 152, 320 140 C350 128, 380 152, 410 140 C440 128, 470 152, 500 140" stroke="#76cbb7" stroke-width="3" fill="none" stroke-linecap="round"/>
-  <path d="M230 163 C260 151, 290 175, 320 163 C350 151, 380 175, 410 163 C440 151, 470 175, 500 163" stroke="#8dd8c6" stroke-width="3" fill="none" stroke-linecap="round"/>
-  <path d="M230 186 C260 174, 290 198, 320 186 C350 174, 380 198, 410 186 C440 174, 470 198, 500 186" stroke="#a4e4d5" stroke-width="3" fill="none" stroke-linecap="round"/>
-
-  <text x="240" y="128" font-size="15" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="700">Focus: {esc(f_city)}</text>
-  <text x="240" y="154" font-size="24" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="800">{f_emj} {esc(f_temp_s)} · {esc(f_desc)}</text>
-  <text x="240" y="210" font-size="13" font-family="Segoe UI, Arial" fill="#8a9b98">Updated: {esc(now)} · Focus rotates each run</text>
+  <!-- center detail area (no waves) -->
+  <rect x="205" y="138" rx="18" ry="18" width="350" height="80" fill="#ffffff" stroke="#dfeee8"/>
+  <text x="225" y="164" font-size="15" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="700">Focus: {esc(f_city)}</text>
+  <text x="225" y="194" font-size="24" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="800">{f_emj} {esc(f_temp_s)} · {esc(f_desc)}</text>
+  <text x="220" y="232" font-size="13" font-family="Segoe UI, Arial" fill="#8a9b98">Updated: {esc(now)} · Focus rotates each run</text>
 """
     return shell("🍡 Weather Ring", body, h=250)
 
 
 def save(path: Path, text: str):
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")
 
 
@@ -259,16 +278,19 @@ def update_readme():
         content = pre + block + post
     else:
         content = content.rstrip() + "\n\n" + block + "\n"
+
     README_PATH.write_text(content, encoding="utf-8")
 
 
 def main():
     repos = gh_repos(USERNAME, per_page=20)
+
     save(CARDS_DIR / "about.svg", card_intro())
     save(CARDS_DIR / "projects.svg", card_projects(repos))
     save(CARDS_DIR / "weather.svg", card_weather())
+
     update_readme()
-    print("Generated cards and updated README successfully.")
+    print("Generated: about.svg / projects.svg / weather.svg + README section updated.")
 
 
 if __name__ == "__main__":
