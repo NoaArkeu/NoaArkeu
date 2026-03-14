@@ -96,6 +96,25 @@ def code_to_emoji(code):
     return "🌈", "Weather"
 
 
+def travel_tip(code, temp):
+    t = temp if isinstance(temp, (int, float)) else None
+    if code in [61, 63, 65, 66, 67, 80, 81, 82]:
+        return "Carry an umbrella. Good day for museums or cafés."
+    if code in [95, 96, 99]:
+        return "Better stay indoor; avoid open areas."
+    if code in [71, 73, 75, 77, 85, 86]:
+        return "Wear warm layers and non-slip shoes."
+    if code in [45, 48]:
+        return "Low visibility: choose short urban routes."
+    if t is not None and t >= 30:
+        return "Hot day: hydrate and avoid noon sun."
+    if t is not None and t <= 5:
+        return "Cold day: gloves + scarf recommended."
+    if code in [0, 1, 2]:
+        return "Great weather for walking and city photos."
+    return "Light and flexible plan is recommended."
+
+
 def shell(title: str, body: str, w=760, h=250):
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}">
   <defs>
@@ -199,17 +218,17 @@ def card_weather():
   <text x="48" y="132" font-size="14" font-family="Segoe UI, Arial" fill="#6b807c">Check API/network</text>
   <text x="48" y="164" font-size="13" font-family="Segoe UI, Arial" fill="#8a9b98">Updated: {now}</text>
 """
-        return shell("🍡 Weather Ring", body, h=250)
+        return shell("🍡 Weather Ring", body, h=230)
 
     focus = random.choice(data)
 
-    # 5 cities, fixed layout
+    # smaller bubbles and smaller center panel
     positions = [
-        (290, 64),   # top
-        (88, 102),   # left-top
-        (522, 102),  # right-top
-        (84, 182),   # left-bottom
-        (526, 182),  # right-bottom
+        (300, 66),   # top
+        (110, 100),  # left-top
+        (500, 100),  # right-top
+        (95, 168),   # left-bottom
+        (515, 168),  # right-bottom
     ]
 
     bubbles = []
@@ -220,32 +239,33 @@ def card_weather():
         ts = f"{t}°C" if t is not None else "--"
         city_name = c.get("city", "Unknown")
 
-        # highlight focused city
         is_focus = (city_name == focus.get("city"))
         stroke = "#78cab8" if is_focus else "#e2efe9"
         stroke_w = "2" if is_focus else "1"
 
         bubbles.append(f"""
   <g>
-    <rect x="{x}" y="{y}" rx="15" ry="15" width="150" height="46" fill="#ffffff" stroke="{stroke}" stroke-width="{stroke_w}"/>
-    <text x="{x+12}" y="{y+29}" font-size="14" font-family="Segoe UI, Arial" fill="#334240">{emj} {esc(city_name)} {esc(ts)}</text>
+    <rect x="{x}" y="{y}" rx="14" ry="14" width="132" height="40" fill="#ffffff" stroke="{stroke}" stroke-width="{stroke_w}"/>
+    <text x="{x+10}" y="{y+25}" font-size="12.8" font-family="Segoe UI, Arial" fill="#334240">{emj} {esc(city_name)} {esc(ts)}</text>
   </g>""")
 
     f_emj, f_desc = code_to_emoji(focus.get("code", -1))
     f_temp = focus.get("temp")
     f_temp_s = f"{f_temp}°C" if f_temp is not None else "--"
     f_city = f"{focus.get('city','Unknown')}, {focus.get('country','')}".strip(", ")
+    tip = travel_tip(focus.get("code", -1), f_temp)
 
     body = f"""
   {''.join(bubbles)}
 
-  <!-- center detail area (no waves) -->
-  <rect x="205" y="138" rx="18" ry="18" width="350" height="80" fill="#ffffff" stroke="#dfeee8"/>
-  <text x="225" y="164" font-size="15" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="700">Focus: {esc(f_city)}</text>
-  <text x="225" y="194" font-size="24" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="800">{f_emj} {esc(f_temp_s)} · {esc(f_desc)}</text>
-  <text x="220" y="232" font-size="13" font-family="Segoe UI, Arial" fill="#8a9b98">Updated: {esc(now)} · Focus rotates each run</text>
+  <rect x="232" y="126" rx="16" ry="16" width="296" height="74" fill="#ffffff" stroke="#dfeee8"/>
+  <text x="248" y="148" font-size="13" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="700">Focus: {esc(f_city)}</text>
+  <text x="248" y="173" font-size="20" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="800">{f_emj} {esc(f_temp_s)} · {esc(f_desc)}</text>
+
+  <text x="232" y="214" font-size="12.8" font-family="Segoe UI, Arial" fill="#5d7470">Trip Tip: {esc(tip)}</text>
+  <text x="232" y="228" font-size="12" font-family="Segoe UI, Arial" fill="#8a9b98">Updated: {esc(now)} · Focus rotates each run</text>
 """
-    return shell("🍡 Weather Ring", body, h=250)
+    return shell("🍡 Weather Ring", body, h=240)
 
 
 def save(path: Path, text: str):
@@ -290,7 +310,7 @@ def main():
     save(CARDS_DIR / "weather.svg", card_weather())
 
     update_readme()
-    print("Generated: about.svg / projects.svg / weather.svg + README section updated.")
+    print("Generated: about.svg / projects.svg / weather.svg + README updated.")
 
 
 if __name__ == "__main__":
