@@ -1,0 +1,125 @@
+:root{
+  --bg1:#f3f7f6; --bg2:#e4f4ee; --mint:#85d8c4; --teal:#6ec6b4;
+  --text:#2f3b3a; --muted:#7f8f8d; --card:rgba(255,255,255,.62);
+  --stroke:rgba(255,255,255,.85); --shadow:0 12px 30px rgba(26,70,60,.10);
+  --radius:22px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Nunito",sans-serif;color:var(--text);background:linear-gradient(135deg,var(--bg1),var(--bg2));overflow-x:hidden}
+.hidden{display:none!important;}
+#cursorGlow{position:fixed;width:220px;height:220px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(133,216,196,.35) 0%,rgba(133,216,196,0) 65%);transform:translate(-50%,-50%)}
+.bg-blur{position:fixed;border-radius:50%;filter:blur(60px);z-index:0}
+.b1{width:260px;height:260px;left:-70px;bottom:-70px;background:#9be7d0}
+.b2{width:220px;height:220px;right:5%;top:6%;background:#d5f0ff}
+.b3{width:180px;height:180px;left:42%;top:-45px;background:#fdf2bf}
+
+.board{position:relative;z-index:1;max-width:1260px;min-height:860px;margin:20px auto 40px;padding:10px}
+.card{position:absolute;padding:18px;border-radius:var(--radius);box-shadow:var(--shadow);transition:box-shadow .25s ease,border-color .25s ease,transform .25s ease}
+.glass{background:var(--card);border:1px solid var(--stroke);backdrop-filter:blur(8px)}
+.tilt{transform:rotate(var(--r,0deg))}
+.floaty{animation:floatY 5s ease-in-out infinite;animation-delay:var(--delay,0s)}
+@keyframes floatY{0%,100%{translate:0 0}50%{translate:0 -7px}}
+
+.sidebar{left:12px;top:110px;width:250px}
+.hero{left:286px;top:12px;width:500px;min-height:150px}
+.clock-card{left:815px;top:58px;width:210px;text-align:center}
+.about-card{left:325px;top:200px;width:300px}
+.calendar-card{left:655px;top:210px;width:380px}
+.weather-card{left:1040px;top:220px;width:210px}
+.links-card{left:120px;top:540px;width:300px;display:flex;gap:10px;flex-wrap:wrap}
+.project-card{left:440px;top:615px;width:360px}
+.music-card{left:820px;top:600px;width:430px;display:flex;justify-content:space-between;gap:12px;align-items:center}
+
+#music.playing{box-shadow:0 0 20px rgba(100,149,237,.4),0 12px 30px rgba(26,70,60,.10);border:1px solid rgba(255,255,255,.5)}
+
+.profile-mini{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.avatar{width:48px;height:48px;border-radius:14px;background:#fff;display:grid;place-items:center;font-size:24px}
+.profile-mini h2{margin:0}
+.profile-mini p{margin:0;color:#35b88a;font-size:12px;font-weight:800}
+nav{display:grid;gap:8px}
+nav a{text-decoration:none;color:var(--text);padding:10px 12px;border-radius:12px}
+nav a:hover{background:#ffffffb5;transform:translateX(4px)}
+
+.hero h1{margin:0;font-size:34px}
+.hero p{margin:8px 0 12px;color:var(--muted)}
+#waveBtn{border:0;background:linear-gradient(135deg,var(--mint),var(--teal));color:#fff;padding:10px 14px;border-radius:12px;font-weight:800;cursor:pointer}
+#waveText{margin-left:8px;color:#3b9c87;font-weight:700}
+#clock{font-size:36px;font-weight:800}
+.clock-label,#dateText{color:var(--muted)}
+
+.about-card .cat{font-size:36px}
+.about-card h3{margin:6px 0}
+.about-card p{margin:0;color:var(--muted)}
+.about-card ul{margin:10px 0 0 18px;color:#4f615f}
+
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.cal-head button{border:0;background:#fff;padding:6px 10px;border-radius:10px;cursor:pointer}
+.week,.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.week span{font-size:12px;color:var(--muted);text-align:center}
+.grid span{height:32px;border-radius:10px;display:grid;place-items:center;font-weight:600}
+.grid .today{background:linear-gradient(135deg,var(--mint),var(--teal));color:white}
+.grid .mute{color:#b9c4c2}
+
+.weather-main{display:flex;gap:10px;align-items:center}
+.weather-emoji{font-size:34px}
+.temp{font-size:24px;font-weight:800}
+.city{color:var(--muted)}
+.weather-desc{margin:8px 0;color:#4d5e5c}
+
+.pill{border:0;text-decoration:none;padding:10px 14px;border-radius:12px;color:#fff;font-weight:800;font-size:14px}
+.github{background:#121212}
+.pending{background:#b7c6c2;cursor:not-allowed}
+
+.project-list{display:grid;gap:8px}
+.repo-item{display:block;text-decoration:none;color:var(--text);background:#ffffffaf;border:1px solid #ffffffd4;border-radius:12px;padding:10px}
+.repo-item .name{font-weight:800}
+.repo-item .meta{font-size:12px;color:var(--muted)}
+.loading,.hint{color:var(--muted)}
+
+.music-left{flex:1}
+.music-title{font-weight:800}
+.music-desc{color:var(--muted)}
+.bar{height:10px;background:#ffffffbb;border-radius:999px;overflow:hidden}
+.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mint),var(--teal))}
+.play-btn{width:42px;height:42px;border:0;border-radius:12px;background:#fff;cursor:pointer}
+.music-btns{display:flex;gap:8px}
+.source{display:block;margin-top:6px;color:var(--muted)}
+.source a{color:#3b8fa0;text-decoration:none}
+.source a:hover{text-decoration:underline}
+
+.iot-panel{position:fixed;inset:0;z-index:20;background:linear-gradient(135deg,#eef8f5,#e3f2ec);display:flex;align-items:center;justify-content:center;padding:24px}
+.iot-card{width:min(980px,95vw);background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.9);border-radius:24px;box-shadow:0 18px 40px rgba(20,70,60,.12);padding:28px 30px;color:#2f3b3a}
+.iot-card h2{margin:0 0 8px;font-size:40px}
+.iot-card h3{margin:0 0 18px;font-size:26px;color:#415654}
+.iot-card p,.iot-card li{font-size:24px;line-height:1.6}
+.back-btn{position:fixed;top:18px;left:18px;z-index:21;border:0;border-radius:12px;padding:10px 14px;cursor:pointer;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.08);font-weight:800}
+
+@media (max-width:1300px){.weather-card{left:655px;top:500px;width:380px}}
+@media (max-width:1100px){
+  #cursorGlow{display:none}
+  .board{max-width:700px;min-height:auto;display:grid;gap:14px;padding:14px}
+  .card{position:static;transform:none!important;width:auto!important;animation:none}
+  .iot-card h2{font-size:28px}.iot-card h3{font-size:20px}.iot-card p,.iot-card li{font-size:18px}
+}
+
+/* 页脚日期样式 */
+.footer-date {
+  text-align: center;
+  padding: 30px 0 50px; /* 增加底部间距，防止显得太拥挤 */
+  font-family: "Nunito", sans-serif; /* 统一字体 */
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  color: var(--muted); /* 使用你定义的灰色变量 */
+  text-transform: uppercase; /* 全大写显得更干练 */
+  opacity: 0.7;
+  position: relative;
+  z-index: 1; /* 确保在背景装饰物之上 */
+}
+
+/* 适配移动端：当卡片变成流式布局时，日期也保持居中 */
+@media (max-width:1100px) {
+  .footer-date {
+    margin-top: 20px;
+    padding-bottom: 30px;
+  }
+}

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noa's Interactive Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div id="cursorGlow"></div>
+  <div class="bg-blur b1"></div>
+  <div class="bg-blur b2"></div>
+  <div class="bg-blur b3"></div>
+
+  <main class="board" id="mainBoard">
+    <aside class="card sidebar glass tilt floaty" style="--r:-2deg;--delay:0s;">
+      <div class="profile-mini">
+        <div class="avatar">🐱</div>
+        <div>
+          <h2>NoaArkeu</h2>
+          <p>OPEN TO WORK</p>
+        </div>
+      </div>
+      <nav>
+        <a href="#" id="openIot">🙋 About Me</a>
+        <a href="#projects">📦 My Projects</a>
+        <a href="#weather">🍃 Weather</a>
+        <a href="#music">🎵 Now Playing</a>
+        <a href="#links">⭐ Links</a>
+      </nav>
+    </aside>
+
+    <section class="card hero glass tilt floaty" style="--r:1.5deg;--delay:.8s;">
+      <h1>Passion deserves to be seen ✨</h1>
+      <p>Welcome to my interactive profile page</p>
+      <button id="waveBtn">👋 Say Hi</button>
+      <span id="waveText"></span>
+    </section>
+
+    <section class="card clock-card glass tilt floaty" style="--r:-1deg;--delay:1.6s;">
+      <div class="clock-label">Current Time</div>
+      <div id="clock">00:00:00</div>
+      <div id="dateText">2026-03-14</div>
+    </section>
+
+    <section class="card about-card glass tilt floaty" id="about" style="--r:2deg;--delay:1.2s;">
+      <div class="cat">૮₍ ˶•⤙•˶ ₎ა</div>
+      <h3 id="greetTitle">Good Afternoon</h3>
+      <p id="greetDesc">I'm Noa, nice to meet you!</p>
+      <ul>
+        <li>Python / Backend / Automation</li>
+        <li>I enjoy building cute and practical web experiences</li>
+      </ul>
+    </section>
+
+    <section class="card calendar-card glass tilt floaty" style="--r:-1.5deg;--delay:.4s;">
+      <div class="cal-head">
+        <button id="prevMonth">◀</button>
+        <strong id="calTitle">2026 / 03</strong>
+        <button id="nextMonth">▶</button>
+      </div>
+      <div class="week">
+        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+      </div>
+      <div id="calendarGrid" class="grid"></div>
+    </section>
+
+    <section class="card weather-card glass tilt floaty" id="weather" style="--r:1deg;--delay:2s;">
+      <h4>🍃 Weather Card</h4>
+      <div class="weather-main">
+        <div class="weather-emoji" id="weatherEmoji">🌤️</div>
+        <div>
+          <div class="temp" id="weatherTemp">--°C</div>
+          <div class="city" id="weatherCity">Shanghai</div>
+        </div>
+      </div>
+      <p id="weatherDesc" class="weather-desc">Fetching weather...</p>
+      <small id="weatherUpdate">Updated: --</small>
+    </section>
+
+    <section class="card links-card glass tilt floaty" id="links" style="--r:-2deg;--delay:1.4s;">
+      <a class="pill github" href="https://github.com/NoaArkeu" target="_blank" rel="noreferrer">GitHub</a>
+      <button class="pill pending" disabled>Bilibili (TBD)</button>
+      <button class="pill pending" disabled>Email (TBD)</button>
+    </section>
+
+    <section class="card project-card glass tilt floaty" id="projects" style="--r:2deg;--delay:2.3s;">
+      <h4>Recent Projects</h4>
+      <div id="projectList" class="project-list">
+        <p class="loading">Loading recent GitHub projects...</p>
+      </div>
+      <p class="hint">Source: GitHub Public API</p>
+    </section>
+
+    <section class="card music-card glass tilt floaty" id="music" style="--r:-1deg;--delay:2.8s;">
+      <div class="music-left">
+        <div class="music-title">🎵 Debussy - Clair de lune</div>
+        <p class="music-desc" id="musicStatus">Ready to play local OGG file</p>
+        <div class="bar"><span id="musicBar"></span></div>
+        <small id="timeText">00:00 / 00:00</small>
+        <small class="source">
+          <a href="https://commons.wikimedia.org/wiki/File:Clair_de_lune_(Claude_Debussy)_Suite_bergamasque.ogg" target="_blank" rel="noreferrer">Claude Debussy</a>,
+          <a href="https://creativecommons.org/licenses/by/3.0" target="_blank" rel="noreferrer">CC BY 3.0</a>,
+          via Wikimedia Commons
+        </small>
+
+        <audio id="audio" preload="metadata">
+          <source src="./assets/music/clair_de_lune.ogg" type="audio/ogg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+
+      <div class="music-btns">
+        <button id="prevBtn" class="play-btn" title="Restart track">⏮</button>
+        <button id="playBtn" class="play-btn" title="Play/Pause">▶</button>
+        <button id="nextBtn" class="play-btn" title="Restart track">⏭</button>
+      </div>
+    </section>
+  </main>
+
+  <section id="iotPanel" class="iot-panel hidden">
+    <button id="backHome" class="back-btn">← Back to Home</button>
+    <div class="iot-card">
+      <h2>🚀 IoT & Embedded Systems Lab</h2>
+      <h3>🌊 Exploration, Code, and Digital Architecture</h3>
+      <p>
+        This profile is a dedicated space for low-level research and hardware experimentation.
+        I am currently focused on the Raspberry Pi ecosystem, exploring the intersection of
+        physical computing and automated data streams.
+      </p>
+      <p><strong>🔭 Current Hardware Stack:</strong></p>
+      <ul>
+        <li>Raspberry Pi 5 (High-performance computing)</li>
+        <li>Raspberry Pi Zero 2 W (Compact embedded projects)</li>
+        <li>Raspberry Pi Pico / Pico 2 W (Microcontroller & RP2040/RP2350 logic)</li>
+      </ul>
+      <p>
+        <strong>🤖 Research Focus:</strong> Assembly language, C/C++ for MCU,
+        and autonomous monitoring via CI/CD pipelines.
+      </p>
+    </div>
+  </section>
+
+  <script src="./script.js"></script>
+</body>
+<footer class="footer-info">
+  <p>Last Updated: March 14, 2026</p>
+</footer>
+</html>
