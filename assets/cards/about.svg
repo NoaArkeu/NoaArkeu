@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="760" height="230" viewBox="0 0 760 230">
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="260" viewBox="0 0 760 260">
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
       <stop offset="0%" stop-color="#f7fbf9"/>
@@ -13,16 +13,28 @@
     </filter>
   </defs>
 
-  <rect x="10" y="10" rx="24" ry="24" width="740" height="210" fill="url(#bg)" stroke="#ffffff" filter="url(#shadow)"/>
+  <rect x="10" y="10" rx="24" ry="24" width="740" height="240" fill="url(#bg)" stroke="#ffffff" filter="url(#shadow)"/>
   <rect x="28" y="28" rx="10" ry="10" width="10" height="28" fill="url(#mint)"/>
-  <text x="48" y="49" font-size="24" font-family="Segoe UI, Arial, sans-serif" fill="#2f3b3a" font-weight="700">🌱 About Me</text>
+  <text x="48" y="49" font-size="24" font-family="Segoe UI, Arial, sans-serif" fill="#2f3b3a" font-weight="700">🚀 IoT &amp; Embedded Systems Lab</text>
   
-  <text x="48" y="95" font-size="20" font-family="Segoe UI, Arial" fill="#334240">Hi, I'm NoaArkeu 👋</text>
-  <text x="48" y="128" font-size="15" font-family="Segoe UI, Arial" fill="#6b807c">Python / Backend / Embedded Curiosity</text>
-  <text x="48" y="156" font-size="15" font-family="Segoe UI, Arial" fill="#6b807c">Building cute + practical interactive pages ✨</text>
+  <text x="48" y="88" font-size="16" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="700">🌊 Exploration, Code, and Digital Architecture</text>
 
-  <rect x="470" y="78" rx="14" ry="14" width="250" height="100" fill="#ffffff" stroke="#e0efe9"/>
-  <text x="488" y="112" font-size="14" font-family="Segoe UI, Arial" fill="#7c908c">Current Focus</text>
-  <text x="488" y="142" font-size="16" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="700">IoT + UI + Python Automation</text>
+  <text x="48" y="116" font-size="13.5" font-family="Segoe UI, Arial" fill="#5f7470">
+    This profile is a dedicated space for low-level research and hardware experimentation.
+  </text>
+  <text x="48" y="138" font-size="13.5" font-family="Segoe UI, Arial" fill="#5f7470">
+    Focused on the Raspberry Pi ecosystem and automated physical computing workflows.
+  </text>
+
+  <text x="48" y="168" font-size="14" font-family="Segoe UI, Arial" fill="#334240" font-weight="700">🔭 Current Hardware Stack</text>
+  <text x="48" y="188" font-size="13.5" font-family="Segoe UI, Arial" fill="#5f7470">• Raspberry Pi 5 (High-performance computing)</text>
+  <text x="48" y="206" font-size="13.5" font-family="Segoe UI, Arial" fill="#5f7470">• Raspberry Pi Zero 2 W (Compact embedded projects)</text>
+  <text x="48" y="224" font-size="13.5" font-family="Segoe UI, Arial" fill="#5f7470">• Raspberry Pi Pico / Pico 2 W (RP2040/RP2350 logic)</text>
+
+  <rect x="478" y="96" rx="14" ry="14" width="242" height="120" fill="#ffffff" stroke="#e0efe9"/>
+  <text x="494" y="124" font-size="14" font-family="Segoe UI, Arial" fill="#7c908c">🤖 Research Focus</text>
+  <text x="494" y="147" font-size="13.5" font-family="Segoe UI, Arial" fill="#334240">Assembly language</text>
+  <text x="494" y="166" font-size="13.5" font-family="Segoe UI, Arial" fill="#334240">C/C++ for MCU</text>
+  <text x="494" y="185" font-size="13.5" font-family="Segoe UI, Arial" fill="#334240">CI/CD autonomous monitoring</text>
 
 </svg>
