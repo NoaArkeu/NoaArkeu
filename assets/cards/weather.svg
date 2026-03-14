@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="250" viewBox="0 0 760 250">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f7fbf9"/>
+      <stop offset="100%" stop-color="#e8f5ef"/>
+    </linearGradient>
+    <linearGradient id="mint" x1="0" x2="1">
+      <stop offset="0%" stop-color="#8adbc8"/>
+      <stop offset="100%" stop-color="#6ec6b4"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#1f5a4e" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect x="10" y="10" rx="24" ry="24" width="740" height="230" fill="url(#bg)" stroke="#ffffff" filter="url(#shadow)"/>
+  <rect x="28" y="28" rx="10" ry="10" width="10" height="28" fill="url(#mint)"/>
+  <text x="48" y="49" font-size="24" font-family="Segoe UI, Arial, sans-serif" fill="#2f3b3a" font-weight="700">🍡 Weather Ring</text>
+  
+  <rect x="292" y="64" rx="15" ry="15" width="176" height="44" fill="#ffffff" stroke="#e2efe9"/>
+  <text x="305" y="92" font-size="14" font-family="Segoe UI, Arial" fill="#334240">🌍 5-City Live Weather</text>
+
+  
+  <g>
+    <rect x="85" y="96" rx="15" ry="15" width="150" height="46" fill="#ffffff" stroke="#e2efe9"/>
+    <text x="97" y="125" font-size="14" font-family="Segoe UI, Arial" fill="#334240">🌤️ Shanghai 7.5°C</text>
+  </g>
+  <g>
+    <rect x="525" y="96" rx="15" ry="15" width="150" height="46" fill="#ffffff" stroke="#e2efe9"/>
+    <text x="537" y="125" font-size="14" font-family="Segoe UI, Arial" fill="#334240">☀️ Tokyo 4.7°C</text>
+  </g>
+  <g>
+    <rect x="65" y="176" rx="15" ry="15" width="150" height="46" fill="#ffffff" stroke="#e2efe9"/>
+    <text x="77" y="205" font-size="14" font-family="Segoe UI, Arial" fill="#334240">☀️ Paris 6.8°C</text>
+  </g>
+  <g>
+    <rect x="545" y="176" rx="15" ry="15" width="150" height="46" fill="#ffffff" stroke="#e2efe9"/>
+    <text x="557" y="205" font-size="14" font-family="Segoe UI, Arial" fill="#334240">☀️ New York 10.3°C</text>
+  </g>
+
+  <path d="M230 140 C260 128, 290 152, 320 140 C350 128, 380 152, 410 140 C440 128, 470 152, 500 140" stroke="#76cbb7" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M230 163 C260 151, 290 175, 320 163 C350 151, 380 175, 410 163 C440 151, 470 175, 500 163" stroke="#8dd8c6" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M230 186 C260 174, 290 198, 320 186 C350 174, 380 198, 410 186 C440 174, 470 198, 500 186" stroke="#a4e4d5" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <text x="240" y="128" font-size="15" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="700">Focus: London, United Kingdom</text>
+  <text x="240" y="154" font-size="24" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="800">🌤️ 8.7°C · Partly Cloudy</text>
+  <text x="240" y="210" font-size="13" font-family="Segoe UI, Arial" fill="#8a9b98">Updated: 2026-03-14 20:42 UTC · Focus rotates each run</text>
+
+</svg>
