@@ -2,8 +2,15 @@ name: Update Profile Cards
 
 on:
   schedule:
-    - cron: "0 * * * *"   # every hour
+    # 对应波兰时间凌晨 04:00 (UTC 03:00)
+    - cron: "0 3 * * *"  
+  # 保留手动触发开关，你想看效果时可以随时在 GitHub 页面点一下
   workflow_dispatch:
+  # 建议增加一个 push 触发，当你修改了 scripts/build_cards.py 时自动运行
+  push:
+    paths:
+      - 'scripts/**'
+      - '.github/workflows/sync.yml'
 
 permissions:
   contents: write
