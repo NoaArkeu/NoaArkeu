@@ -20,28 +20,28 @@
   
   <g>
     <rect x="300" y="64" rx="12" ry="12" width="132" height="36" fill="#ffffff" stroke="#e2efe9" stroke-width="1"/>
-    <text x="310" y="87" font-size="11.5" font-family="Segoe UI, Arial" fill="#334240">🌦️ Shanghai 27.4°C</text>
+    <text x="310" y="87" font-size="11.5" font-family="Segoe UI, Arial" fill="#334240">🌧️ Shanghai 27.2°C</text>
   </g>
   <g>
     <rect x="110" y="100" rx="12" ry="12" width="132" height="36" fill="#ffffff" stroke="#e2efe9" stroke-width="1"/>
-    <text x="120" y="123" font-size="11.5" font-family="Segoe UI, Arial" fill="#334240">☀️ Paris 20.6°C</text>
+    <text x="120" y="123" font-size="11.5" font-family="Segoe UI, Arial" fill="#334240">☀️ Paris 22.8°C</text>
   </g>
   <g>
     <rect x="500" y="100" rx="12" ry="12" width="132" height="36" fill="#ffffff" stroke="#e2efe9" stroke-width="1"/>
-    <text x="510" y="123" font-size="11.5" font-family="Segoe UI, Arial" fill="#334240">☀️ London 18.0°C</text>
+    <text x="510" y="123" font-size="11.5" font-family="Segoe UI, Arial" fill="#334240">☀️ London 22.3°C</text>
   </g>
   <g>
-    <rect x="95" y="156" rx="12" ry="12" width="132" height="36" fill="#ffffff" stroke="#e2efe9" stroke-width="1"/>
-    <text x="105" y="179" font-size="11.5" font-family="Segoe UI, Arial" fill="#334240">🌧️ New York 10.1°C</text>
+    <rect x="95" y="156" rx="12" ry="12" width="132" height="36" fill="#ffffff" stroke="#78cab8" stroke-width="1.8"/>
+    <text x="105" y="179" font-size="11.5" font-family="Segoe UI, Arial" fill="#334240">🌫️ New York 13.1°C</text>
   </g>
   <g>
-    <rect x="515" y="156" rx="12" ry="12" width="132" height="36" fill="#ffffff" stroke="#78cab8" stroke-width="1.8"/>
-    <text x="525" y="179" font-size="11.5" font-family="Segoe UI, Arial" fill="#334240">🌤️ Warsaw 20.5°C</text>
+    <rect x="515" y="156" rx="12" ry="12" width="132" height="36" fill="#ffffff" stroke="#e2efe9" stroke-width="1"/>
+    <text x="525" y="179" font-size="11.5" font-family="Segoe UI, Arial" fill="#334240">☁️ Warsaw 17.0°C</text>
   </g>
 
-  <text x="232" y="138" font-size="11.8" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="700">Focus: Warsaw, Poland</text>
-  <text x="232" y="160" font-size="14.5" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="800">🌤️ 20.5°C · Partly Cloudy</text>
-  <text x="232" y="179" font-size="11.2" font-family="Segoe UI, Arial" fill="#5d7470">Trip Tip: Great weather for walking and city photos.</text>
-  <text x="232" y="196" font-size="10.8" font-family="Segoe UI, Arial" fill="#8a9b98">Updated: 2026-05-24 06:37 UTC · Focus rotates each run</text>
+  <text x="232" y="138" font-size="11.8" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="700">Focus: New York, United States</text>
+  <text x="232" y="160" font-size="14.5" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="800">🌫️ 13.1°C · Fog</text>
+  <text x="232" y="179" font-size="11.2" font-family="Segoe UI, Arial" fill="#5d7470">Trip Tip: Low visibility: choose short urban routes.</text>
+  <text x="232" y="196" font-size="10.8" font-family="Segoe UI, Arial" fill="#8a9b98">Updated: 2026-05-25 07:14 UTC · Focus rotates each run</text>
 
 </svg>
