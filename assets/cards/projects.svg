@@ -16,7 +16,7 @@
   <rect x="10" y="10" rx="24" ry="24" width="740" height="210" fill="url(#bg)" stroke="#ffffff" filter="url(#shadow)"/>
   <rect x="28" y="28" rx="10" ry="10" width="10" height="28" fill="url(#mint)"/>
   <text x="48" y="49" font-size="24" font-family="Segoe UI, Arial, sans-serif" fill="#2f3b3a" font-weight="700">📦 Recent Projects</text>
-  <text x="48" y="96" font-size="15" font-family="Segoe UI, Arial" fill="#334240">• watchman-dashboard · Python · ★1 · 2026-07-10</text>
+  <text x="48" y="96" font-size="15" font-family="Segoe UI, Arial" fill="#334240">• watchman-dashboard · Python · ★1 · 2026-07-11</text>
   <text x="48" y="130" font-size="15" font-family="Segoe UI, Arial" fill="#334240">• x86 · Assembly · ★0 · 2026-05-06</text>
   <text x="48" y="164" font-size="15" font-family="Segoe UI, Arial" fill="#334240">• pi5project · Python · ★0 · 2026-03-31</text>
   <rect x="540" y="78" rx="12" ry="12" width="180" height="42" fill="#ffffff" stroke="#dff0ea"/>
