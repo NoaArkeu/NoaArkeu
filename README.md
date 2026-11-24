@@ -12,9 +12,6 @@
 
 <!-- GENERATED_CARDS_START -->
 <p align="center">
-  <img src="./assets/cards/about.svg" width="92%" />
-</p>
-<p align="center">
   <img src="./assets/cards/projects.svg" width="92%" />
 </p>
 <p align="center">
