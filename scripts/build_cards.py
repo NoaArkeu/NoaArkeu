@@ -138,30 +138,6 @@ def shell(title: str, body: str, w=760, h=250):
 </svg>"""
 
 
-def card_intro():
-    body = f"""
-  <text x="48" y="88" font-size="16" font-family="Segoe UI, Arial" fill="#2f3b3a" font-weight="700">🌊 Exploration, Code, and Digital Architecture</text>
-
-  <text x="48" y="116" font-size="13.5" font-family="Segoe UI, Arial" fill="#5f7470">
-    This profile is a dedicated space for low-level research and hardware experimentation.
-  </text>
-  <text x="48" y="138" font-size="13.5" font-family="Segoe UI, Arial" fill="#5f7470">
-    Focused on the Raspberry Pi ecosystem and automated physical computing workflows.
-  </text>
-
-  <text x="48" y="168" font-size="14" font-family="Segoe UI, Arial" fill="#334240" font-weight="700">🔭 Current Hardware Stack</text>
-  <text x="48" y="188" font-size="13.5" font-family="Segoe UI, Arial" fill="#5f7470">• Raspberry Pi 5 (High-performance computing)</text>
-  <text x="48" y="206" font-size="13.5" font-family="Segoe UI, Arial" fill="#5f7470">• Raspberry Pi Zero 2 W (Compact embedded projects)</text>
-  <text x="48" y="224" font-size="13.5" font-family="Segoe UI, Arial" fill="#5f7470">• Raspberry Pi Pico / Pico 2 W (RP2040/RP2350 logic)</text>
-
-  <rect x="478" y="96" rx="14" ry="14" width="242" height="120" fill="#ffffff" stroke="#e0efe9"/>
-  <text x="494" y="124" font-size="14" font-family="Segoe UI, Arial" fill="#7c908c">🤖 Research Focus</text>
-  <text x="494" y="147" font-size="13.5" font-family="Segoe UI, Arial" fill="#334240">Assembly language</text>
-  <text x="494" y="166" font-size="13.5" font-family="Segoe UI, Arial" fill="#334240">C/C++ for MCU</text>
-  <text x="494" y="185" font-size="13.5" font-family="Segoe UI, Arial" fill="#334240">CI/CD autonomous monitoring</text>
-"""
-    return shell("🚀 IoT & Embedded Systems Lab", body, h=260)
-
 
 def card_projects(repos):
     repos = [r for r in repos if not r.get("fork")]
@@ -273,9 +249,6 @@ def save(path: Path, text: str):
 def update_readme():
     block = """<!-- GENERATED_CARDS_START -->
 <p align="center">
-  <img src="./assets/cards/about.svg" width="92%" />
-</p>
-<p align="center">
   <img src="./assets/cards/projects.svg" width="92%" />
 </p>
 <p align="center">
@@ -302,12 +275,11 @@ def update_readme():
 def main():
     repos = gh_repos(USERNAME, per_page=20)
 
-    save(CARDS_DIR / "about.svg", card_intro())
     save(CARDS_DIR / "projects.svg", card_projects(repos))
     save(CARDS_DIR / "weather.svg", card_weather())
 
     update_readme()
-    print("Generated: about.svg / projects.svg / weather.svg + README updated.")
+    print("Generated: projects.svg / weather.svg + README updated.")
 
 
 if __name__ == "__main__":
